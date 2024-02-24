@@ -1,6 +1,9 @@
 # This is a sample Python script.
 from problems.AWSProcessScheduling import AWSProcessScheduling
+from problems.Djikstra import Djikstra
 from problems.FruitCrush import FruitCrush
+from problems.GoldmanSachs import GoldmanSachs
+from problems.Krushkal import Krushkal
 from problems.MinSwapsToPartitionAdjacent import MinSwapsToPartitionAdjacent
 
 # Press ⌃R to execute it or replace it with your code.
@@ -16,8 +19,11 @@ if __name__ == "__main__":
     # temp = NetworkDelaySolution()
     # temp = Knapsack()
     # temp = FruitCrush()
+    # temp = GoldmanSachs()
     # temp = AWSProcessScheduling()
-    temp = MinSwapsToPartitionAdjacent()
+    # temp = MinSwapsToPartitionAdjacent()
+    # temp = Djikstra()
+    temp = Krushkal()
     temp.run()
 
 

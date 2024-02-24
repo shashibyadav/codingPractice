@@ -2,8 +2,6 @@ import heapq
 import math
 from queue import PriorityQueue
 
-import heapdict
-
 
 class AWSProcessScheduling:
     def __init__(self):
