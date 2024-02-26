@@ -2,6 +2,7 @@
 from problems.AWSProcessScheduling import AWSProcessScheduling
 from problems.BFS import BFS
 from problems.BFSRecursion import BFSRecursion
+from problems.ConcatSubstring import ConcatSubstring
 from problems.DFS import DFS
 from problems.DFSRecursion import DFSRecursion
 from problems.Djikstra import Djikstra
@@ -13,6 +14,7 @@ from problems.Krushkal import Krushkal
 from problems.LetterCombinations import LetterCombinations
 from problems.LongestPalindromicSubstring import LongestPalindromicSubstring
 from problems.LongestSubstringWithoutRepeating import LongestSubstringWithoutRepeating
+from problems.MergeKLists import MergeKLists
 from problems.MinSwapsToPartitionAdjacent import MinSwapsToPartitionAdjacent
 
 # Press ⌃R to execute it or replace it with your code.
@@ -47,7 +49,9 @@ if __name__ == "__main__":
     # temp = LongestPalindromicSubstring()
     # temp = RegularExpressionMatch()
     # temp = LetterCombinations()
-    temp = GenerateParenthesis()
+    # temp = GenerateParenthesis()
+    # temp = MergeKLists()
+    temp = ConcatSubstring()
     temp.run()
 
 
