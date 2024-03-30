@@ -4,8 +4,9 @@ class FruitCrush:
         self.input = None
 
     def run(self):
-        input = [2,2,2,5,1,2]
+        input = [1, -2, 2]
         dictionary = dict()
+
         for i in range(len(input)):
             if input[i] not in dictionary:
                 dictionary[input[i]] = 1
@@ -29,10 +30,12 @@ class FruitCrush:
                 else:
                     removed_keys.add(item)
                     removed_keys.add(key)
-                    key = -1
-        for key in removed_keys:
-            del dictionary[key]
+                    key = None
+
         final = 0
+        for item in removed_keys:
+            del dictionary[item]
+
         for key, value in dictionary.items():
             final += value
 
