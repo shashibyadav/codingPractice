@@ -17,7 +17,7 @@ class Solution:
             else:
                 s_number = original[start_idx:]
                 number = int(original[start_idx:])
-                if number < 255 and not (
+                if number <= 255 and not (
                     s_number.startswith("0") and len(s_number) > 1
                 ):
                     result.append(prefix + s_number)
@@ -57,4 +57,4 @@ class Solution:
             )
 
 
-print(Solution().restoreIpAddresses("101023"))
+print(Solution().restoreIpAddresses("255255255255"))
