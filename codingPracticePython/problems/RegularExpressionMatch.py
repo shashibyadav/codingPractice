@@ -1,43 +1,50 @@
 class Solution:
-    def helper(self, s, p, index1, index2):
+    def helper(self, s, p, index1, index2, dp):
         if index1 < 0 and index2 < 0:
             return True
-        elif index1 < 0:
-            result = True
-            while index2 >= 0:
-                if p[index2] != "*":
-                    result = False
-                    break
-                index2 -= 2
-            return result
-
-        elif index2 < 0:
+        key = f"{index1}_{index2}"
+        if index1 < 0:
+            return dp[key]
+        if index2 < 0:
             return False
-
-        s_char = s[index1]
+        if key in dp:
+            return dp[key]
         p_char = p[index2]
+        s_char = s[index1]
+        result = False
         if p_char == "." or p_char == s_char:
-            return self.helper(s, p, index1 - 1, index2 - 1)
+            result = self.helper(s, p, index1 - 1, index2 - 1, dp)
         elif p_char == "*":
-            nx_index2 = index2 - 1
-            if nx_index2 == -1:
-                return False
-            nx_p_char = p[nx_index2]
-            if nx_p_char == ".":
-                return True
-            while nx_p_char == s_char:
-                index1 -= 1
-                if index1 == -1:
-                    break
-                s_char = s[index1]
-            return self.helper(s, p, index1, index2 - 2)
-        else:
-            return False
+            nx_p_char = p[index2 - 1]
+            if nx_p_char == s_char or nx_p_char == ".":
+                result = self.helper(s, p, index1 - 1, index2, dp)
+                result2 = self.helper(s, p, index1 - 1, index2 - 2, dp)
+                result3 = self.helper(s, p, index1, index2 - 2, dp)
+                result = result or result2 or result3
+            else:
+                result = self.helper(s, p, index1, index2 - 2, dp)
+        dp[key] = result
+        return result
 
     def isMatch(self, s: str, p: str) -> bool:
         length1 = len(s) - 1
         length2 = len(p) - 1
-        return self.helper(s, p, length1, length2)
+        dp = dict()
+        dp["-1_-1"] = True
+        start = 0
+        while start <= length2:
+            item = p[start]
+            dp[f"-1_{start}"] = False
+            if start + 1 <= length2:
+                item2 = p[start + 1]
+                if item2 == "*":
+                    dp[f"-1_{start + 1}"] = True and dp[f"-1_{start - 1}"]
+                    start = start + 2
+                else:
+                    start += 1
+            else:
+                start += 1
+        return self.helper(s, p, length1, length2, dp)
 
 
-print(Solution().isMatch("aab", "c*a*b"))
+print(Solution().isMatch("a", "..*"))
